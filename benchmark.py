@@ -772,10 +772,10 @@ def benchmark_limitation_scenarios(n_trials=10):
         'winner': 'FastGLM' if speedup > 1 else 'sklearn'
     })
     
-    # Scenario 4: Large dataset (n=100000, p=20)
-    print("\n[Scenario 4] TOO LARGE: Large dataset (n=100000, p=20)")
+    # Scenario 4: Large dataset (n=20000, p=20)
+    print("\n[Scenario 4] TOO LARGE: Large dataset (n=20000, p=20)")
     np.random.seed(42)
-    n, p = 100000, 20
+    n, p = 20000, 20
     X = np.random.randn(n, p)
     y = (1 / (1 + np.exp(-(X @ np.random.randn(p) * 0.3))) > 0.5).astype(float)
     
@@ -800,8 +800,8 @@ def benchmark_limitation_scenarios(n_trials=10):
     print(f"  Pred diff: {pred_diff:.6f}")
     
     results.append({
-        'scenario': 'Too large (n=100000, p=20)',
-        'n_samples': 100000,
+        'scenario': 'Too large (n=20000, p=20)',
+        'n_samples': 20000,
         'n_features': 20,
         'fastglm_time': fastglm_time,
         'baseline_time': sklearn_time,
@@ -1238,7 +1238,7 @@ def main():
     print("=" * 80)
     
     # Test configurations with comprehensive sample sizes
-    n_samples_list = [10, 50, 100, 500, 1000, 5000, 10000, 100000]
+    n_samples_list = [10, 50, 100, 500, 1000, 5000, 10000, 20000]
     n_features = 20
     n_trials = 10
     
